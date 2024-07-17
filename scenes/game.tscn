@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqupcxobj285c"]
+
+[ext_resource type="PackedScene" uid="uid://coqalkybpbkyu" path="res://scenes/player.tscn" id="1_u07no"]
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_yvahb"]
+[ext_resource type="PackedScene" uid="uid://cig5d7s6mt1ib" path="res://tileset/tileSet.tscn" id="2_xv1e1"]
+[ext_resource type="PackedScene" uid="uid://p1u2a134d8i5" path="res://scenes/damage_objects/laser.tscn" id="3_ntdpx"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_yvahb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TileSet" parent="." instance=ExtResource("2_xv1e1")]
+position = Vector2(-960, -540)
+
+[node name="Laser" parent="." instance=ExtResource("3_ntdpx")]
+position = Vector2(247, -188)
+
+[node name="Player" parent="." instance=ExtResource("1_u07no")]
+position = Vector2(-1, -5)

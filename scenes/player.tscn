@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://coqalkybpbkyu"]
+
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_mcxyb"]
+[ext_resource type="Texture2D" uid="uid://d0fn4jyw0m2h5" path="res://assets/slime.png" id="1_pfh7e"]
+[ext_resource type="Script" path="res://scripts/player/player_movement.gd" id="2_y0aea"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3l43p"]
+atlas = ExtResource("1_pfh7e")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1so3"]
+atlas = ExtResource("1_pfh7e")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f26sh"]
+atlas = ExtResource("1_pfh7e")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rijb8"]
+atlas = ExtResource("1_pfh7e")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utfv4"]
+atlas = ExtResource("1_pfh7e")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_07jqr"]
+animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_3l43p")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_a1so3")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_f26sh")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_rijb8")
+}, {
+"duration": 6.0,
+"texture": SubResource("AtlasTexture_utfv4")
+}],
+"loop": true,
+"name": &"playerIdle",
+"speed": 60.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2ibta"]
+radius = 38.0526
+
+[node name="PlayerNode" type="Node2D"]
+script = ExtResource("1_mcxyb")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(-1, 9.53674e-07)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("2_y0aea")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(4, -48)
+scale = Vector2(1.97454, 2)
+sprite_frames = SubResource("SpriteFrames_07jqr")
+animation = &"playerIdle"
+autoplay = "playerIdle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(4, -40)
+shape = SubResource("CircleShape2D_2ibta")
